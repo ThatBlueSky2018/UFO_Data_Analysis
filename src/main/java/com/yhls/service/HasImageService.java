@@ -2,10 +2,8 @@ package com.yhls.service;
 
 
 
-import com.yhls.utils.Target;
-
-import java.util.List;
+import com.yhls.utils.StatisticData;
 
 public interface HasImageService {
-    public Target<Integer,Integer> list();
+    StatisticData<Integer,Integer> getData();
 }

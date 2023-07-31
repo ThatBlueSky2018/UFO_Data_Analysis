@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Target<I,D> {
+public class StatisticData<I,D> {
     private List<I> independentVariable; //自变量
     private List<D> dependentVariable; //因变量
 }

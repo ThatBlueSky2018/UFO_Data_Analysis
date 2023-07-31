@@ -2,6 +2,6 @@ package com.yhls.service;
 
 import com.yhls.utils.StatisticData;
 
-public interface NuforcNoteService {
+public interface CommentsService {
     StatisticData<String,Integer> getData();
 }
