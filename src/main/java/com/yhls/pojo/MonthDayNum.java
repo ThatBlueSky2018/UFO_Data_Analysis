@@ -5,14 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 /**
- * UFO出现时长区间分布实体类
+ * 统计UFO目击的日期情况
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ufo_time_section")
-public class UFOTimeSection {
-    private Integer timeSection;
-    private Integer count;
+@TableName("month_day_num")
+public class MonthDayNum {
+    private Integer monthinfo;
+    private Integer dayinfo;
+    private Integer num;
 }
