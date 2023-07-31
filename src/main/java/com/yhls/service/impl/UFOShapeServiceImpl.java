@@ -3,7 +3,7 @@ package com.yhls.service.impl;
 import com.yhls.mapper.UFOShapeMapper;
 import com.yhls.pojo.UFOShape;
 import com.yhls.service.UFOShapeService;
-import com.yhls.utils.StatisticData;
+import com.yhls.utils.NameValueMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +17,15 @@ public class UFOShapeServiceImpl implements UFOShapeService {
     private UFOShapeMapper ufoShapeMapper;
 
     @Override
-    public StatisticData<String, Integer> getData() {
-        List<UFOShape> records=ufoShapeMapper.selectList(null);
-        List<String> shape=new ArrayList<>();
-        List<Integer> count=new ArrayList<>();
+    public List<NameValueMap<String,Integer>> getData() {
+        List<UFOShape> records=ufoShapeMapper.getTop8();
+        List<NameValueMap<String,Integer>> data=new ArrayList<>();
         for(UFOShape record:records) {
-            shape.add(record.getShape());
-            count.add(record.getCount());
+            NameValueMap<String,Integer> nameValueMap=new NameValueMap<>();
+            nameValueMap.setName(record.getShape());
+            nameValueMap.setValue(record.getCount());
+            data.add(nameValueMap);
         }
-        StatisticData<String,Integer> statisticData=new StatisticData<>();
-        statisticData.setIndependentVariable(shape);
-        statisticData.setDependentVariable(count);
-        return statisticData;
+        return data;
     }
 }

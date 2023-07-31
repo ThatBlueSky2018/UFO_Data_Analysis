@@ -1,7 +1,10 @@
 package com.yhls.service;
 
-import com.yhls.utils.StatisticData;
+import com.yhls.utils.NameValueMap;
+
+import java.util.List;
+
 
 public interface UFOShapeService {
-    StatisticData<String,Integer> getData();
+    List<NameValueMap<String,Integer>> getData();
 }
