@@ -23,7 +23,7 @@ public class UFOYearServiceImpl implements UFOYearService {
         List<Integer> count=new ArrayList<>();
         for(UFOYear record:records) {
             year.add(record.getYear());
-            year.add(record.getCount());
+            count.add(record.getCount());
         }
         StatisticData<Integer,Integer> statisticData=new StatisticData<>();
         statisticData.setIndependentVariable(year);
