@@ -3,7 +3,7 @@ package com.yhls.service.impl;
 import com.yhls.mapper.UFOWordsMapper;
 import com.yhls.pojo.UFOWords;
 import com.yhls.service.UFOWordsService;
-import com.yhls.utils.StatisticData;
+import com.yhls.utils.NameValueMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +17,15 @@ public class UFOWordsServiceImpl implements UFOWordsService {
     private UFOWordsMapper ufoWordsMapper;
 
     @Override
-    public StatisticData<String, Integer> getData() {
+    public List<NameValueMap<String,Integer>> getData() {
         List<UFOWords> records=ufoWordsMapper.selectList(null);
-        List<String> words=new ArrayList<>();
-        List<Integer> count=new ArrayList<>();
+        List<NameValueMap<String,Integer>> data=new ArrayList<>();
         for(UFOWords record:records) {
-            words.add(record.getWord());
-            count.add(record.getCount());
+            NameValueMap<String,Integer> nameValueMap=new NameValueMap<>();
+            nameValueMap.setName(record.getWord());
+            nameValueMap.setValue(record.getCount());
+            data.add(nameValueMap);
         }
-        StatisticData<String,Integer> statisticData=new StatisticData<>();
-        statisticData.setIndependentVariable(words);
-        statisticData.setDependentVariable(count);
-        return statisticData;
+        return data;
     }
 }

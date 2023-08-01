@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ufo_time_section")
+@TableName("ufo_time_section_2")
 public class UFOTimeSection {
-    private Integer timeSection;
-    private Integer count;
+    private Integer timeSectionStart;
+    private Integer timeSectionEnd;
+    private Integer countSum;
 }

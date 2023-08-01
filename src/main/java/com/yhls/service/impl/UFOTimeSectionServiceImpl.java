@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UFOTimeSectionServiceImpl implements UFOTimeSectionService{
@@ -18,21 +16,27 @@ public class UFOTimeSectionServiceImpl implements UFOTimeSectionService{
     @Autowired
     private UFOTimeSectionMapper ufoTimeSectionMapper;
 
-    private String timeSectionMapper(Integer time) {
-        if(time<10) {
+    private String timeSectionMapper(Integer timeEnd) {
+        if(timeEnd==10) {
             return "10秒之内";
-        } else if (time<30) {
+        } else if (timeEnd==30) {
             return "10秒~30秒";
-        } else if (time<60) {
+        } else if (timeEnd==60) {
             return "30秒~1分钟";
-        } else if (time<300) {
+        } else if (timeEnd==300) {
             return "1分钟~5分钟";
-        } else if (time<600) {
+        } else if (timeEnd==600) {
             return "5分钟~10分钟";
-        } else if (time<1200) {
-            return "10分钟~20分钟";
+        } else if (timeEnd==1800) {
+            return "10分钟~30分钟";
+        } else if (timeEnd==3600) {
+            return "30分钟~1小时";
+        } else if (timeEnd==86400) {
+            return "1小时~1天";
+        } else if (timeEnd==604800) {
+            return "1天~7天";
         } else {
-            return "超过20分钟";
+            return "超过7天";
         }
     }
     @Override
@@ -40,22 +44,23 @@ public class UFOTimeSectionServiceImpl implements UFOTimeSectionService{
         List<UFOTimeSection> records=ufoTimeSectionMapper.selectList(null);
         List<String> timeSection=new ArrayList<>();
         List<Integer> count=new ArrayList<>();
-        Map<String,Integer> timeSectionMap=new HashMap<>(); //统计时间区间信息的哈希表
+        StatisticData<String,Integer> statisticData=new StatisticData<>();
         for(UFOTimeSection record:records) {
-            if(record.getTimeSection()==null) {
-                timeSectionMap.put("不确定",timeSectionMap.getOrDefault("不确定",0)+record.getCount());
+            if(record.getTimeSectionEnd()==null) {
+                if(record.getTimeSectionStart()==null) {
+                    timeSection.add("不确定");
+                    count.add(record.getCountSum());
+                }
+                else {
+                    timeSection.add("超过7天");
+                    count.add(record.getCountSum());
+                }
             }
             else {
-                timeSectionMap.put(timeSectionMapper(record.getTimeSection()),
-                        timeSectionMap.getOrDefault(timeSectionMapper(record.getTimeSection()),0)+
-                        record.getCount());
+                timeSection.add(timeSectionMapper(record.getTimeSectionEnd()));
+                count.add(record.getCountSum());
             }
         }
-         for(Map.Entry<String,Integer> entry:timeSectionMap.entrySet()) {
-             timeSection.add(entry.getKey());
-             count.add(entry.getValue());
-         }
-        StatisticData<String,Integer> statisticData=new StatisticData<>();
          statisticData.setIndependentVariable(timeSection);
          statisticData.setDependentVariable(count);
         return statisticData;
