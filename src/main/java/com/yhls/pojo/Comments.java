@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comments {
-    private Integer wordCountSection;
+    private Integer wordsCountSection;
     private Integer count;
 }

@@ -43,8 +43,14 @@ public class CommentsServiceImpl implements CommentsService {
         List<String> wordCountSection = new ArrayList<>();
         List<Integer> count=new ArrayList<>();
         for(Comments record:records) {
-            wordCountSection.add(wordCountSectionMapper(record.getWordCountSection()));
-            count.add(record.getCount());
+            if(record.getWordsCountSection()==null) {
+                wordCountSection.add("不确定");
+                count.add(record.getCount());
+            }
+            else {
+                wordCountSection.add(wordCountSectionMapper(record.getWordsCountSection()));
+                count.add(record.getCount());
+            }
         }
         StatisticData<String,Integer> statisticData =new StatisticData<>();
         statisticData.setIndependentVariable(wordCountSection);

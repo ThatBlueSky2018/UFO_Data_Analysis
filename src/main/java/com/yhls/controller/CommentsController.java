@@ -16,10 +16,6 @@ public class CommentsController {
     @Autowired
     private CommentsService commentsService;
 
-    /**
-     * 注意：此接口测试还未通过！！！
-     * @return data
-     */
     @GetMapping("/comments")
     public ResponseResult getData() {
         log.info("获取目击者描述统计信息");
