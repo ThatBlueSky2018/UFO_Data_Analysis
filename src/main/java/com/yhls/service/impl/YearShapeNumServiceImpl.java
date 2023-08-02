@@ -22,7 +22,7 @@ public class YearShapeNumServiceImpl implements YearShapeNumService {
         head.add("Count");
         head.add("FillUp1");
         head.add("FillUp2");
-        head.add("State");
+        head.add("Shape");
         head.add("Year");
         data.add(head);
         for (YearShapeNum record : records) {
