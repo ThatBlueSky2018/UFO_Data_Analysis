@@ -1,10 +1,11 @@
 server:
   port: 8080
 
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://49.232.241.171:3306/ufo_dws
+    url: jdbc:mysql://49.232.241.171:3306/ufo_dws_SparkSql?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: NKcs123456
     druid:
@@ -12,12 +13,31 @@ spring:
       max-active: 10
       min-idle: 1
       max-wait: 5
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
 
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+
+
+## JWT Configuration ##
+jwt:
+  secret: 2b44b0b00fd822d8ce753e54dac3dc4e06c2725f7db930f3b9924468b53194dbccdbe23d7baa5ef5fbc414ca4b2e64700bad60c5a7c45eaba56880985582fba4
+  expiration: 36000000
+
+## logging Configuration ##
+logging:
+  file:
+    name: D:/ufo-log.log
+  logback:
+    rollingpolicy:
+      max-file-size: 100KB
+  level:
+    root: info

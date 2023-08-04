@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("year_shape_dynamic_sorting_2")
+@TableName("ufo_dynamic_sorting")
 public class YearShapeNum {
     private Integer yearinfo;
     private String shape;
-    private Integer count;
+    private Integer num;
 }

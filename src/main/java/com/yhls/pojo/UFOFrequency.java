@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("ufo_frequency")
+@TableName("ufo_state")
 public class UFOFrequency {
     private String state;
     private Integer count;

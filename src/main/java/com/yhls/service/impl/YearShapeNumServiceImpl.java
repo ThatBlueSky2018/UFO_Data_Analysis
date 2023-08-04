@@ -27,7 +27,7 @@ public class YearShapeNumServiceImpl implements YearShapeNumService {
         data.add(head);
         for (YearShapeNum record : records) {
             List<Object> metadata = new ArrayList<>();
-            metadata.add(record.getCount());
+            metadata.add(record.getNum());
             metadata.add("");
             metadata.add("");
             metadata.add(record.getShape());

@@ -49,16 +49,16 @@ public class UFOTimeSectionServiceImpl implements UFOTimeSectionService{
             if(record.getTimeSectionEnd()==null) {
                 if(record.getTimeSectionStart()==null) {
                     timeSection.add("不确定");
-                    count.add(record.getCountSum());
+                    count.add(record.getCountNum());
                 }
                 else {
                     timeSection.add("超过7天");
-                    count.add(record.getCountSum());
+                    count.add(record.getCountNum());
                 }
             }
             else {
                 timeSection.add(timeSectionMapper(record.getTimeSectionEnd()));
-                count.add(record.getCountSum());
+                count.add(record.getCountNum());
             }
         }
          statisticData.setIndependentVariable(timeSection);
