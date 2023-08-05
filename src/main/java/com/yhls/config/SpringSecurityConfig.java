@@ -31,11 +31,15 @@ public class SpringSecurityConfig {
     { http
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//            .and()
             .authorizeHttpRequests(auth ->{
                 auth.requestMatchers("/ufo/**").permitAll();
                 auth.requestMatchers("/login").permitAll();
                 auth.requestMatchers("/register").permitAll();
+                auth.requestMatchers("/reports/**").permitAll();
+                //auth.requestMatchers("/reports/submit").hasAuthority("USER");
+                //auth.requestMatchers("/reports/list").hasAuthority("USER");
+                //auth.requestMatchers("/reports/check").hasAuthority("ADMIN");
+                //auth.requestMatchers("/reports/pass").hasAuthority("ADMIN");
                 auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
                 auth.requestMatchers("/superAdmin/**").hasAuthority("SUPERADMIN");
             })

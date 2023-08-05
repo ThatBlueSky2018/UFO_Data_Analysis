@@ -35,7 +35,7 @@ jwt:
 ## logging Configuration ##
 logging:
   file:
-    name: D:/ufo-log.log
+    name: D:/log.out
   logback:
     rollingpolicy:
       max-file-size: 100KB
