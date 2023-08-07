@@ -34,31 +34,31 @@ public class UfoApplication {
         userService.saverUser(new User("LanMingang@ufo.com",passwordEncoder.encode("NKcs123456"),new ArrayList<>()));
         userService.saverUser(new User("SongKunyu@ufo.com",passwordEncoder.encode("NKcs123456"),new ArrayList<>()));
 
-        Role role1 = iRoleRepository.findByRoleName(RoleName.ADMIN);
+        Role user = iRoleRepository.findByRoleName(RoleName.USER);
+        Role admin = iRoleRepository.findByRoleName(RoleName.ADMIN);
+        Role superAdmin = iRoleRepository.findByRoleName(RoleName.SUPERADMIN);
+
+
         User user1 = iUserRepository.findByEmail("YangKaiwen@ufo.com").orElse(null);
-        user1.getRoles().add(role1);
+        user1.getRoles().add(user);
+        user1.getRoles().add(admin);
         userService.saverUser(user1);
 
-        Role role2 = iRoleRepository.findByRoleName(RoleName.ADMIN);
         User user2 = iUserRepository.findByEmail("HanYue@ufo.com").orElse(null);
-        user2.getRoles().add(role2);
+        user2.getRoles().add(user);
+        user2.getRoles().add(admin);
         userService.saverUser(user2);
 
-        Role role3 = iRoleRepository.findByRoleName(RoleName.ADMIN);
         User user3 = iUserRepository.findByEmail("LanMingang@ufo.com").orElse(null);
-        user3.getRoles().add(role3);
+        user3.getRoles().add(user);
+        user3.getRoles().add(admin);
         userService.saverUser(user3);
 
-        Role role4 = iRoleRepository.findByRoleName(RoleName.ADMIN);
         User user4 = iUserRepository.findByEmail("SongKunyu@ufo.com").orElse(null);
-        user4.getRoles().add(role4);
+        user4.getRoles().add(user);
+        user4.getRoles().add(admin);
+        user4.getRoles().add(superAdmin);
         userService.saverUser(user4);
-
-        User user5 = iUserRepository.findByEmail("SongKunyu@ufo.com").orElse(null);
-        Role role5 = iRoleRepository.findByRoleName(RoleName.SUPERADMIN);
-        user5.getRoles().add(role5);
-        userService.saverUser(user5);
-
     };}
 
 }
