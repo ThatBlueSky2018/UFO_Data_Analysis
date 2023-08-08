@@ -1,5 +1,6 @@
 package com.yhls.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.yhls.mapper.UFOWordsMapper;
 import com.yhls.pojo.UFOWords;
 import com.yhls.service.UFOWordsService;
@@ -18,7 +19,9 @@ public class UFOWordsServiceImpl implements UFOWordsService {
 
     @Override
     public List<NameValueMap<String,Integer>> getData() {
-        List<UFOWords> records=ufoWordsMapper.selectList(null);
+        QueryWrapper<UFOWords> wrapper=new QueryWrapper<>();
+        wrapper.last("limit 100");
+        List<UFOWords> records=ufoWordsMapper.selectList(wrapper);
         List<NameValueMap<String,Integer>> data=new ArrayList<>();
         for(UFOWords record:records) {
             NameValueMap<String,Integer> nameValueMap=new NameValueMap<>();

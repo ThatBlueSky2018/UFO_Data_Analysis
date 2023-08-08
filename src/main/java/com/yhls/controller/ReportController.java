@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 @CrossOrigin(origins = "*")
-@RequestMapping("/reports")
+@RequestMapping("/api/reports")
 public class ReportController {
     @Autowired
     private ReportService reportService;

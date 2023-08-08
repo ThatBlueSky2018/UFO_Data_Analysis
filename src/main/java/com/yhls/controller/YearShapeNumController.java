@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 @Slf4j
-@RequestMapping("/ufo")
+@RequestMapping("/api/ufo")
 public class YearShapeNumController {
     @Autowired
     private YearShapeNumService yearShapeNumService;

@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://49.232.241.171:3306/ufo_dws_SparkSql?useUnicode=true&useJDBCCompliantTimezoneShift=true&createDatabaseIfNotExist=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: NKcs123456
+    password: 123456
     druid:
       initial-size: 1
       max-active: 10
@@ -35,7 +35,7 @@ jwt:
 ## logging Configuration ##
 logging:
   file:
-    name: D:/log.out
+    name: /export/data/log.out
   logback:
     rollingpolicy:
       max-file-size: 100KB

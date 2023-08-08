@@ -50,18 +50,18 @@ public class SpringSecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth ->{
-                auth.requestMatchers("/ufo/**").permitAll();
-                auth.requestMatchers("/login").permitAll();
-                auth.requestMatchers("/register").permitAll();
-                auth.requestMatchers("/reports/submit").permitAll();
-                auth.requestMatchers("/reports/list").permitAll();
+                auth.requestMatchers("/api/ufo/**").permitAll();
+                auth.requestMatchers("/api/login").permitAll();
+                auth.requestMatchers("/api/register").permitAll();
+                auth.requestMatchers("/api/reports/submit").permitAll();
+                auth.requestMatchers("/api/reports/list").permitAll();
 
                 /* 暂时允许所有人提交和查看
                 auth.requestMatchers("/reports/submit").hasAuthority("USER");
                 auth.requestMatchers("/reports/list").hasAuthority("USER");
                  **/
-                auth.requestMatchers("/reports/check").hasAuthority("ADMIN");
-                auth.requestMatchers("/reports/pass").hasAuthority("ADMIN");
+                auth.requestMatchers("/api/reports/check").hasAuthority("ADMIN");
+                auth.requestMatchers("/api/reports/pass").hasAuthority("ADMIN");
 
                 //auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
                 //auth.requestMatchers("/superAdmin/**").hasAuthority("SUPERADMIN");

@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Slf4j
-@RequestMapping("/ufo")
+@RequestMapping("/api/ufo")
 public class UFOWordsController {
     @Autowired
     private UFOWordsService ufoWordsService;

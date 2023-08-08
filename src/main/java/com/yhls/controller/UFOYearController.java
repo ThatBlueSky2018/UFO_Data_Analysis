@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 @CrossOrigin
-@RequestMapping("/ufo")
+@RequestMapping("/api/ufo")
 public class UFOYearController {
 
     @Autowired
