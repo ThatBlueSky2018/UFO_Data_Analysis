@@ -53,18 +53,11 @@ public class SpringSecurityConfig {
                 auth.requestMatchers("/api/ufo/**").permitAll();
                 auth.requestMatchers("/api/login").permitAll();
                 auth.requestMatchers("/api/register").permitAll();
-                auth.requestMatchers("/api/reports/submit").permitAll();
-                auth.requestMatchers("/api/reports/list").permitAll();
+                auth.requestMatchers("/api/reports/submit").hasAuthority("USER");
+                auth.requestMatchers("/api/reports/list").hasAuthority("USER");
 
-                /* 暂时允许所有人提交和查看
-                auth.requestMatchers("/reports/submit").hasAuthority("USER");
-                auth.requestMatchers("/reports/list").hasAuthority("USER");
-                 **/
                 auth.requestMatchers("/api/reports/check").hasAuthority("ADMIN");
                 auth.requestMatchers("/api/reports/pass").hasAuthority("ADMIN");
-
-                //auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
-                //auth.requestMatchers("/superAdmin/**").hasAuthority("SUPERADMIN");
             })
             .httpBasic(Customizer.withDefaults());
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

@@ -20,7 +20,7 @@ public class UFOWordsServiceImpl implements UFOWordsService {
     @Override
     public List<NameValueMap<String,Integer>> getData() {
         QueryWrapper<UFOWords> wrapper=new QueryWrapper<>();
-        wrapper.last("limit 100");
+        wrapper.last("limit 300");
         List<UFOWords> records=ufoWordsMapper.selectList(wrapper);
         List<NameValueMap<String,Integer>> data=new ArrayList<>();
         for(UFOWords record:records) {
