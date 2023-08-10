@@ -29,10 +29,10 @@ public class UfoApplication {
     {   userService.saveRole(new Role(RoleName.USER));
         userService.saveRole(new Role(RoleName.ADMIN));
         userService.saveRole(new Role(RoleName.SUPERADMIN));
-        userService.saverUser(new User("YangKaiwen@ufo.com", passwordEncoder.encode("NKcs123456"), new ArrayList<>()));
-        userService.saverUser(new User("HanYue@ufo.com", passwordEncoder.encode("NKcs123456"), new ArrayList<>()));
-        userService.saverUser(new User("LanMingang@ufo.com",passwordEncoder.encode("NKcs123456"),new ArrayList<>()));
-        userService.saverUser(new User("SongKunyu@ufo.com",passwordEncoder.encode("NKcs123456"),new ArrayList<>()));
+        userService.saverUser(new User("YangKaiwen@ufo.com", passwordEncoder.encode("******"), new ArrayList<>()));
+        userService.saverUser(new User("HanYue@ufo.com", passwordEncoder.encode("******"), new ArrayList<>()));
+        userService.saverUser(new User("LanMingang@ufo.com",passwordEncoder.encode("******"),new ArrayList<>()));
+        userService.saverUser(new User("SongKunyu@ufo.com",passwordEncoder.encode("******"),new ArrayList<>()));
 
         Role user = iRoleRepository.findByRoleName(RoleName.USER);
         Role admin = iRoleRepository.findByRoleName(RoleName.ADMIN);
